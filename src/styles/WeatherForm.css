@@ -7,19 +7,36 @@
     width: 300px;
     border: 3px solid #61dafb;
     border-radius: 30px;
+    margin-top: 60px;
 }
 .weatherForm input:focus {
     outline-width: 0;
 }
 .weatherForm button{
+    margin-top: 60px;
     margin-left: 10px;
     font-weight: bold;
     padding: 10px 5px;
     border: 3px solid #61dafb;
     border-radius: 20px;
-    transition: .3s;
+    transition: .45s;
 }
 .weatherForm button:hover{
     background-color: #61dafb;
     cursor: pointer;
+}
+.top{
+    position: relative;
+}
+#hello{
+    left: 10px;
+    position: absolute;
+    margin: 10px;
+}
+#welcome{
+    top: 35px;
+    left: 120px;
+    position: absolute;
+    color: whitesmoke;
+    font-style: italic;
 }

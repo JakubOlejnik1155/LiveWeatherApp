@@ -1,5 +1,13 @@
 import React from 'react';
 import '../styles/Response.css'
+import Sunrise from '../images/sunrise.png'
+import Sunset from '../images/sunset.png'
+import Cloud from '../images/cloud.png'
+import Direction from '../images/direction.png'
+import Humidity from '../images/humidity.png'
+import Pressure from '../images/pressure.png'
+import Temperature from '../images/temperature.png'
+import Wind from '../images/wind.png'
 const Response = (props) => {
     const isoCountries = {
         'AF': 'Afghanistan',
@@ -262,15 +270,17 @@ const Response = (props) => {
     const sunsetTime = new Date(props.weather.sys.sunset * 1000).toLocaleTimeString();
     return (
         <div className="liveWeatherResponse">
-            <p>Live weather for <span className="head">{props.weather.name + " "}</span><em>({Country})</em> <span>{time}</span></p>
-            <p><span className="head">Sunrise: </span>{sunriseTime}</p>
-            <p><span className="head">Sunset: </span>{sunsetTime}</p>
-            <p><span className="head">Temperature: </span>{props.weather.main.temp + "°C"} <em>(perceived temperature: {props.weather.main.feels_like + "°C"})</em> </p>
-            <p><span className="head">Humidity: </span>{props.weather.main.humidity + "%"}</p>
-            <p><span className="head">Pressure: </span>{props.weather.main.pressure + " hPa"}</p>
-            <p><span className="head">Clouds: </span>{props.weather.clouds.all + "%"}</p>
-            <p><span className="head">Wind speed:</span> {props.weather.wind.speed + "m/s"}</p>
-            <p><span className="head">Wind direction: </span>{props.weather.wind.deg + "°"}</p>
+            <p id="head">Live weather for <span className="head">{props.weather.name + " "}</span><em>({Country})</em> <span>{time}</span></p>
+            <div id="live-conditions">
+                <p><img src={Sunrise} alt="sunrise" /><span className="head">Sunrise: </span>{sunriseTime}</p>
+                <p><img src={Sunset} alt="sunset" /><span className="head">Sunset: </span>{sunsetTime}</p>
+                <p><img src={Temperature} alt="temperature" /><span className="head">Temperature: </span>{props.weather.main.temp + "°C"} <em>(perceived temperature: {props.weather.main.feels_like + "°C"})</em> </p>
+                <p><img src={Humidity} alt="humidity" /><span className="head">Humidity: </span>{props.weather.main.humidity + "%"}</p>
+                <p><img src={Pressure} alt="pressure" /><span className="head">Pressure: </span>{props.weather.main.pressure + " hPa"}</p>
+                <p><img src={Cloud} alt="cloud" /><span className="head">Clouds: </span>{props.weather.clouds.all + "%"}</p>
+                <p><img src={Wind} alt="wind" /><span className="head">Wind speed:</span> {props.weather.wind.speed + "m/s"}</p>
+                <p><img src={Direction} alt="wind-direction" /><span className="head">Wind direction: </span>{props.weather.wind.deg + "°"}</p>
+            </div>
         </div>
     );
 }

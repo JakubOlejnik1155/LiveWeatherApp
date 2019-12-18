@@ -21,15 +21,14 @@ class App extends Component {
     if (!element) {
       flag = false
     }
-    for (let index = 0; index < this.state.input.length; index++) {
-      if (element.charAt(index) > 33 && element.charAt(index) < 64) {
-        this.setState({
-          error: 'you entered numbers instead of city',
-          input: '',
-          missingCity: element,
-        });
-        flag = false;
-      }
+    const numbers = /^[0-9]+$/;
+    if (element.match(numbers)) {
+      this.setState({
+        error: 'you entered numbers instead of city',
+        input: '',
+        missingCity: element,
+      });
+      flag = false;
     }
     if (flag) {
       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.input}&appid=9b2e69fdc3396e7b6cd92b0d5a636435&units=metric`)

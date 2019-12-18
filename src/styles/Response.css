@@ -8,3 +8,19 @@
     height: 10px;
     color: #61dafb;
 }
+#head{
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+div#live-conditions {
+    padding-bottom: 20px;
+    padding-left: 110px;
+    text-align: left;
+}
+div#live-conditions  p{
+    margin-bottom: 10px;
+}
+div#live-conditions p img{
+    height: 20px;
+    margin-right: 5px;
+}

@@ -1,0 +1,13 @@
+.errorResponse{
+    color:whitesmoke;
+    padding-bottom: 20px;
+}
+.erNumber{
+    color: orangered;
+}
+.badcity{
+    color:#61dafb;
+}
+.errorResponse img{
+    width: 50px;
+}
