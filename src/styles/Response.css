@@ -33,9 +33,21 @@ div#live-conditions p img{
     border-radius: 20px;
     transition: .45s;
 }
-#forecast-button:hover{
+#hide-forecast-button{
+    margin-bottom: 20px;
+    font-weight: bold;
+    padding: 10px 10px;
+    border: 2px solid #61dafb;
+    background-color: whitesmoke;
+    border-radius: 50px;
+    transition: .45s;
+}
+#forecast-button:hover,#hide-forecast-button:hover {
     background-color: #61dafb;
     cursor: pointer;
     letter-spacing: 1px;
     border: 2px solid whitesmoke;
+}
+#forecast-button:focus, #hide-forecast-button:focus{
+    outline: none;
 }

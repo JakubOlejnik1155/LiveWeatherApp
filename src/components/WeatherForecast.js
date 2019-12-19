@@ -1,9 +1,12 @@
 import React from 'react';
+import '../styles/WeatherForecast.css'
 
-const WeatherForecast = () => {
+const WeatherForecast = (props) => {
     return (
-        <div>
-            Forecast
+        <div id="forecast-container">
+            <h2 style={{ lineHeight: "400px", color: "whitesmoke" }}>
+                Forecast for {props.city}
+            </h2>
         </div>
     );
 }

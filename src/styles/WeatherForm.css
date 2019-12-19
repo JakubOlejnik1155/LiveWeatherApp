@@ -9,9 +9,10 @@
     border-radius: 30px;
     margin-top: 60px;
 }
-.weatherForm input:focus {
+.weatherForm input:focus , .weatherForm button:focus {
     outline-width: 0;
 }
+
 .weatherForm button{
     margin-top: 60px;
     margin-left: 10px;
