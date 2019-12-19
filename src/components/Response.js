@@ -296,7 +296,7 @@ const Response = (props) => {
                 <p><img src={Direction} alt="wind-direction" /><span className="head">Wind direction: </span>{props.weather.wind.deg ? props.weather.wind.deg + "°" : " - "} <em>({props.weather.wind.deg ? windCompas : " - "})</em></p>
             </div>
             <button id="forecast-button" onClick={()=>setCount(!count)}>Check forecast for {props.weather.name}</button>
-            {count ? <h1>Prognoza</h1>:null}
+            {count ? <h1 style={{lineHeight: "3000px"}}>Prognoza</h1>:null}
         </div>
     );
 }
