@@ -1,0 +1,12 @@
+#footer{
+    text-align: center;
+    color: whitesmoke;
+    width: 100vw;
+    height: 30px;
+    background-color: rgba(40,44,52, 0.4);
+}
+#footer p {
+    line-height: 30px;
+    font-size: 11px;
+    font-style: italic;
+}

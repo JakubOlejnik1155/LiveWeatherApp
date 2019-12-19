@@ -8,6 +8,7 @@ import Humidity from '../images/humidity.png'
 import Pressure from '../images/pressure.png'
 import Temperature from '../images/temperature.png'
 import Wind from '../images/wind.png'
+import Rain from '../images/rain.png'
 const Response = (props) => {
     const isoCountries = {
         'AF': 'Afghanistan',
@@ -263,11 +264,22 @@ const Response = (props) => {
             return countryCode;
         }
     }
+    const degToCompass = (num) => {
+        const val = Math.floor((num / 22.5) + 0.5);
+        const arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+        return arr[(val % 16)];
+    }
     //viariables
+
     const Country = getCountryName(props.weather.sys.country)
+    const windCompas = degToCompass(props.weather.wind.deg)
     const time = new Date().toLocaleString()
     const sunriseTime = new Date(props.weather.sys.sunrise * 1000).toLocaleTimeString();
     const sunsetTime = new Date(props.weather.sys.sunset * 1000).toLocaleTimeString();
+    let rain = 0.0;
+    if (props.weather.rain) {
+        rain = props.weather.rain["1h"];
+    }
     return (
         <div className="liveWeatherResponse">
             <p id="head">Live weather for <span className="head">{props.weather.name + " "}</span><em>({Country})</em> <span>{time}</span></p>
@@ -278,8 +290,9 @@ const Response = (props) => {
                 <p><img src={Humidity} alt="humidity" /><span className="head">Humidity: </span>{props.weather.main.humidity + "%"}</p>
                 <p><img src={Pressure} alt="pressure" /><span className="head">Pressure: </span>{props.weather.main.pressure + " hPa"}</p>
                 <p><img src={Cloud} alt="cloud" /><span className="head">Clouds: </span>{props.weather.clouds.all + "%"}</p>
-                <p><img src={Wind} alt="wind" /><span className="head">Wind speed:</span> {props.weather.wind.speed + "m/s"}</p>
-                <p><img src={Direction} alt="wind-direction" /><span className="head">Wind direction: </span>{props.weather.wind.deg + "°"}</p>
+                <p><img src={Rain} alt="rain" /><span className="head">Rain in last hour: </span>{rain + " mm"}</p>
+                <p><img src={Wind} alt="wind" /><span className="head">Wind speed: </span> {props.weather.wind.speed + " m/s"}</p>
+                <p><img src={Direction} alt="wind-direction" /><span className="head">Wind direction: </span>{props.weather.wind.deg + "°"} <em>({windCompas})</em></p>
             </div>
         </div>
     );

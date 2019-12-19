@@ -3,6 +3,7 @@ import '../styles/App.css';
 import WeatherForm from './WeatherForm'
 import Response from './Response'
 import Error from './Error'
+import Footer from './Footer'
 
 class App extends Component {
   state = {
@@ -57,11 +58,16 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <WeatherForm val={this.state.input} subimt={this.handleFormSubmition} change={this.handleInputChange} />
-        {this.state.error && <Error city={this.state.missingCity} err={this.state.error} />}
-        {(this.state.weather && !this.state.error) && <Response weather={this.state.weather} />}
-      </div>
+      <>
+        <div id="container">
+          <div className="App">
+            <WeatherForm val={this.state.input} subimt={this.handleFormSubmition} change={this.handleInputChange} />
+            {this.state.error && <Error city={this.state.missingCity} err={this.state.error} />}
+            {(this.state.weather && !this.state.error) && <Response weather={this.state.weather} />}
+          </div>
+        </div>
+        <Footer />
+      </>
     );
   }
 }
