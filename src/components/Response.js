@@ -292,7 +292,7 @@ const Response = (props) => {
                 <p><img src={Cloud} alt="cloud" /><span className="head">Clouds: </span>{props.weather.clouds.all + "%"}</p>
                 <p><img src={Rain} alt="rain" /><span className="head">Rain in last hour: </span>{rain + " mm"}</p>
                 <p><img src={Wind} alt="wind" /><span className="head">Wind speed: </span> {props.weather.wind.speed + " m/s"}</p>
-                <p><img src={Direction} alt="wind-direction" /><span className="head">Wind direction: </span>{props.weather.wind.deg + "°"} <em>({windCompas})</em></p>
+                <p><img src={Direction} alt="wind-direction" /><span className="head">Wind direction: </span>{props.weather.wind.deg ? props.weather.wind.deg + "°" : " - "} <em>({props.weather.wind.deg ? windCompas : " - "})</em></p>
             </div>
         </div>
     );
