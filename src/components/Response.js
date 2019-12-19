@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../styles/Response.css'
 import Sunrise from '../images/sunrise.png'
 import Sunset from '../images/sunset.png'
@@ -257,6 +257,7 @@ const Response = (props) => {
         'ZM': 'Zambia',
         'ZW': 'Zimbabwe'
     };
+    const [count = false ,setCount] = useState(0);//hooks
     const getCountryName = (countryCode) => {
         if (isoCountries.hasOwnProperty(countryCode)) {
             return isoCountries[countryCode];
@@ -273,7 +274,7 @@ const Response = (props) => {
 
     const Country = getCountryName(props.weather.sys.country)
     const windCompas = degToCompass(props.weather.wind.deg)
-    const time = new Date().toLocaleString()
+    // const time = new Date().toLocaleString()
     const sunriseTime = new Date(props.weather.sys.sunrise * 1000).toLocaleTimeString();
     const sunsetTime = new Date(props.weather.sys.sunset * 1000).toLocaleTimeString();
     let rain = 0.0;
@@ -282,7 +283,7 @@ const Response = (props) => {
     }
     return (
         <div className="liveWeatherResponse">
-            <p id="head">Live weather for <span className="head">{props.weather.name + " "}</span><em>({Country})</em> <span>{time}</span></p>
+            <p id="head">Live weather for <span className="head">{props.weather.name + " "}</span><em>({Country}) {props.time}</em></p>
             <div id="live-conditions">
                 <p><img src={Sunrise} alt="sunrise" /><span className="head">Sunrise: </span>{sunriseTime}</p>
                 <p><img src={Sunset} alt="sunset" /><span className="head">Sunset: </span>{sunsetTime}</p>
@@ -294,6 +295,8 @@ const Response = (props) => {
                 <p><img src={Wind} alt="wind" /><span className="head">Wind speed: </span> {props.weather.wind.speed + " m/s"}</p>
                 <p><img src={Direction} alt="wind-direction" /><span className="head">Wind direction: </span>{props.weather.wind.deg ? props.weather.wind.deg + "°" : " - "} <em>({props.weather.wind.deg ? windCompas : " - "})</em></p>
             </div>
+            <button id="forecast-button" onClick={()=>setCount(!count)}>Check forecast for {props.weather.name}</button>
+            {count ? <h1>Prognoza</h1>:null}
         </div>
     );
 }

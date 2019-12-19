@@ -7,6 +7,7 @@ import Footer from './Footer'
 
 class App extends Component {
   state = {
+    time: null,
     input: '',
     weather: null,
     error: null,
@@ -43,6 +44,7 @@ class App extends Component {
         .then(response => response.json())
         .then(data => {
           this.setState({
+            time: new Date().toLocaleString(),
             input: '',
             weather: data,
             error: false
@@ -63,7 +65,7 @@ class App extends Component {
           <div className="App">
             <WeatherForm val={this.state.input} subimt={this.handleFormSubmition} change={this.handleInputChange} />
             {this.state.error && <Error city={this.state.missingCity} err={this.state.error} />}
-            {(this.state.weather && !this.state.error) && <Response weather={this.state.weather} />}
+            {(this.state.weather && !this.state.error) && <Response weather={this.state.weather} time={this.state.time} />}
           </div>
         </div>
         <Footer />
