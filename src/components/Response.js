@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/Response.css'
 import WeatherForecast from './WeatherForecast';
+import WeatherForecastError from './WeatherForecastError.js'
 import Sunrise from '../images/sunrise.png'
 import Sunset from '../images/sunset.png'
 import Cloud from '../images/cloud.png'
@@ -258,7 +259,9 @@ const Response = (props) => {
         'ZM': 'Zambia',
         'ZW': 'Zimbabwe'
     };
-    // const [count = false, setCount] = useState(0);//hooks
+    const [forecast, setForecast] = useState({});//hooks
+    const [error, setError] = useState(null)
+    const [errorNumber, setErrorNumber] = useState(0)
     const getCountryName = (countryCode) => {
         if (isoCountries.hasOwnProperty(countryCode)) {
             return isoCountries[countryCode];
@@ -274,8 +277,24 @@ const Response = (props) => {
     //viariables
     const ForecastRequest = () => {
         console.log('forecast reaquest for ' + props.weather.name);
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${props.weather.name}&appid=9b2e69fdc3396e7b6cd92b0d5a636435&units=metric`)
+            .then(response => {
+                if (response.ok) {
+                    return response;
+                }
+                setError(true)
+                setErrorNumber(response.status)
+                throw Error(response.status)
+            })
+            .then(response => response.json())
+            .then(data => {
+                setForecast(data);
+                setError(false);
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
-
     const Country = getCountryName(props.weather.sys.country)
     const windCompas = degToCompass(props.weather.wind.deg)
     // const time = new Date().toLocaleString()
@@ -300,10 +319,11 @@ const Response = (props) => {
                 <p><img src={Direction} alt="wind-direction" /><span className="head">Wind direction: </span>{props.weather.wind.deg ? props.weather.wind.deg + "°" : " - "} <em>({props.weather.wind.deg ? windCompas : " - "})</em></p>
             </div>
             {!props.isForecastNeeded ? <button id="forecast-button" onClick={() => {
-                props.handleForecastChange()
+                props.handleForecastChange();
                 ForecastRequest();
             }}>Check forecast for {props.weather.name}</button> : <button id="hide-forecast-button" onClick={() => props.handleForecastChange()}>X</button>}
-            {props.isForecastNeeded ? <WeatherForecast city={props.weather.name} /> : null}
+            {props.isForecastNeeded && error === true ? <WeatherForecastError city={props.weather.name} error={errorNumber} /> : null}
+            {props.isForecastNeeded && error === false ? <WeatherForecast city={props.weather.name} forecast={forecast} /> : null}
         </div>
     );
 }
