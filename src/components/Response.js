@@ -327,7 +327,7 @@ const Response = (props) => {
                 ForecastRequest();
             }}>Check forecast for {props.weather.name}</button> : <button id="hide-forecast-button" onClick={() => props.handleForecastChange()}>X</button>}
             {props.isForecastNeeded && error === true ? <WeatherForecastError city={props.weather.name} error={errorNumber} /> : null}
-            {props.isForecastNeeded && error === false ? <WeatherForecast city={props.weather.name} forecast={forecast} /> : null}
+            {props.isForecastNeeded && error === false ? <WeatherForecast city={props.weather.name} forecast={forecast} timezone={props.weather.timezone} /> : null}
         </div>
     );
 }
