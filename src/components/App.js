@@ -14,6 +14,12 @@ class App extends Component {
     missingCity: null,
     isForecastNeeded: false,
   }
+  calcTime = (offset) => {
+    const d = new Date();
+    const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+    const nd = new Date(utc + (3600000 * offset));
+    return nd.toLocaleString();
+  }
   handleInputChange = (event) => {
     this.setState({ input: event.target.value });
   }
@@ -45,7 +51,7 @@ class App extends Component {
         .then(response => response.json())
         .then(data => {
           this.setState({
-            time: new Date().toLocaleString(),
+            time: this.calcTime((data.timezone / 3600).toString()),
             input: '',
             weather: data,
             error: false,

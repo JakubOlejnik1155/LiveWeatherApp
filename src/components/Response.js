@@ -295,11 +295,15 @@ const Response = (props) => {
                 console.log(error)
             })
     }
+    const calcTime = (offset, d) => {
+        const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+        const nd = new Date(utc + (3600000 * offset));
+        return nd.toLocaleTimeString();
+    }
     const Country = getCountryName(props.weather.sys.country)
     const windCompas = degToCompass(props.weather.wind.deg)
-    // const time = new Date().toLocaleString()
-    const sunriseTime = new Date(props.weather.sys.sunrise * 1000).toLocaleTimeString();
-    const sunsetTime = new Date(props.weather.sys.sunset * 1000).toLocaleTimeString();
+    const sunriseTime = calcTime((props.weather.timezone / 3600), new Date(props.weather.sys.sunrise * 1000))
+    const sunsetTime = calcTime((props.weather.timezone / 3600), new Date(props.weather.sys.sunset * 1000))
     let rain = 0.0;
     if (props.weather.rain) {
         rain = props.weather.rain["1h"];
