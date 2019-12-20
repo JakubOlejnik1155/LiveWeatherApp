@@ -11,7 +11,8 @@ class App extends Component {
     input: '',
     weather: null,
     error: null,
-    missingCity: null
+    missingCity: null,
+    isForecastNeeded: false,
   }
   handleInputChange = (event) => {
     this.setState({ input: event.target.value });
@@ -47,7 +48,8 @@ class App extends Component {
             time: new Date().toLocaleString(),
             input: '',
             weather: data,
-            error: false
+            error: false,
+            isForecastNeeded: false
           });
         })
         .catch(error => {
@@ -58,6 +60,11 @@ class App extends Component {
         })
     }
   }
+  handleForecastChange = () => {
+    this.setState(prevState => {
+      return { isForecastNeeded: !prevState.isForecastNeeded };
+    });
+  }
   render() {
     return (
       <>
@@ -65,7 +72,10 @@ class App extends Component {
           <div className="App">
             <WeatherForm val={this.state.input} subimt={this.handleFormSubmition} change={this.handleInputChange} />
             {this.state.error && <Error city={this.state.missingCity} err={this.state.error} />}
-            {(this.state.weather && !this.state.error) && <Response weather={this.state.weather} time={this.state.time} />}
+            {(this.state.weather && !this.state.error) && <Response
+              weather={this.state.weather} time={this.state.time}
+              handleForecastChange={this.handleForecastChange}
+              isForecastNeeded={this.state.isForecastNeeded} />}
           </div>
         </div>
         <Footer />
