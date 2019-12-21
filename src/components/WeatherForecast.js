@@ -1,61 +1,98 @@
 import React from 'react';
+import Table from './Table'
 import '../styles/WeatherForecast.css'
 
 const WeatherForecast = (props) => {
+    //wind direction from degrees to compass
+    const degToCompass = (num) => {
+        const val = Math.floor((num / 22.5) + 0.5);
+        const arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+        return arr[(val % 16)];
+    }
     //calculating local time of the
-    //destionation of weather forecast
+    //destionation of weather forecast using offset
     const calcTime = (offset) => {
         const d = new Date();
         const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
         const nd = new Date(utc + (3600000 * offset));
         return nd;
     }
+    //calculating time using offset and our time
     const calcTime2 = (offset, d) => {
         const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
         const nd = new Date(utc + (3600000 * offset));
         return nd;
     }
-    const t = calcTime(props.timezone / 3600);
-    console.log("t=" + t.getHours())
-    // console.log(t.toLocaleDateString())
-    // const currentTime = t.toLocaleTimeString();
-    //compas direction
-    const degToCompass = (num) => {
-        const val = Math.floor((num / 22.5) + 0.5);
-        const arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
-        return arr[(val % 16)];
-    }
+    //atrual local time where we looking for forecast
+    const actualLocaleTime = calcTime(props.timezone / 3600);
+    console.log(actualLocaleTime.getHours())
+    console.log(new Date().getUTCHours())
     //all forecast array
-    const forecastArray = props.forecast.list;
-    // console.log(forecastArray)
+    const forecastArray = props.forecast.list; //all days forecast
+    const forecastArray_1 = JSON.parse(JSON.stringify(forecastArray));//all days forecast copy to change
+    //changing miliseconds in utc to destination local time
+    for (let i = 0; i < forecastArray_1.length; i++) {
+        const localeTimeOfNextForecast = new Date(forecastArray_1[i].dt * 1000)
+        forecastArray_1[i].dt = calcTime2(props.timezone / 3600, localeTimeOfNextForecast).toLocaleTimeString().substring(0, 2)
+        const time = calcTime2(props.timezone / 3600, localeTimeOfNextForecast);
+        const formatted_date = time.getFullYear() + "-" + (time.getMonth() + 1) + "-" + time.getDate() + " " + time.getHours()
+        forecastArray_1[i].dt_txt = formatted_date;
+    }
+    //making todays array forecast
     const todayForecastArray = []
-    forecastArray.forEach(element => {
-        // console.log(calcTime2(props.timezone / 3600, new Date(element.dt * 1000)))
-        // console.log(calcTime2(props.timezone / 3600, calcTime(element.dt * 1000)).toTimeString())
-        if (t.toLocaleDateString() === calcTime2(props.timezone / 3600, new Date(element.dt * 1000)).toLocaleDateString()) {
+    for (let i = 0; i < forecastArray_1.length; i++) {
+        const element = forecastArray_1[i];
+        if (element.dt > actualLocaleTime.getHours()) {
             todayForecastArray.push(element)
         }
-    });
-    //making arrays from props
-    const restDaysForecast = forecastArray.slice(todayForecastArray.length)
+        else {
+            break;
+        }
+    }
+    //deleting todays forecasts from main array
+    for (let i = 0; i < todayForecastArray.length; i++) {
+        forecastArray_1.shift()
+    }
 
-    //showing number of forecast boxes properly
+    console.log(forecastArray_1)
+    console.log(todayForecastArray)
+
     const boxes = []
-    for (let index = 8; index < restDaysForecast.length - 1; index += 8) {
+    for (let index = 8; index < forecastArray_1.length; index += 8) {
         boxes.push(
-            <li key={restDaysForecast[index].dt_txt}>
-                <p className="forecast-header">{restDaysForecast[index].dt_txt.substring(0, 10)}</p>
-                <div className="forecast"></div>
+            <li key={forecastArray_1[index].dt_txt}>
+                <p className="forecast-header">{forecastArray_1[index].dt_txt.substring(0, 10)}</p>
+                <div className="forecast">
+                    {forecasts}
+                </div>
             </li>
         )
     }
-    //todays Tables
+    //making forecasts arrays in one array called days
+    const days = []
+    let tmp = []
+    for (let i = 0; i < boxes.length + 1; i++) {
+        tmp = []
+        for (let j = 0; j < 8; j++) {
+            if (forecastArray_1[j]) {
+                tmp.push(forecastArray_1[j])
+            }
+        }
+        days.push(tmp)
+        for (let j = 0; j < 8; j++) {
+            if (forecastArray_1.length > 0) {
+                forecastArray_1.shift()
+            }
+        }
+    }
+    console.log("days:")
+    console.log(days)
+
+    // //todays Tables
     const todayHours = [], todayContitions = [], todayPressure = [], todayTemperature = [], todayRain = [], todayWindSpeed = [], todayWindDir = []
-    const hours = [0, 3, 6, 9, 12, 15, 18, 21];
-    const timeArray = hours.filter(h => h >= t.getHours())
     for (let index = 0; index < todayForecastArray.length; index++) {
         todayHours.push(
-            <td key={todayForecastArray[index].dt_txt}>{timeArray[index]}</td>
+            <td key={todayForecastArray[index].dt_txt}>{todayForecastArray[index].dt}</td>
         )
         todayContitions.push(
             <td key={todayForecastArray[index].dt_txt}>
@@ -97,9 +134,13 @@ const WeatherForecast = (props) => {
             )
         }
     }
+
+    const forecasts = days.map(day => <Table forecast={day} />)
+    /////////RETURN/////////////////
     return (
         <div id="forecast-container">
-            {todayForecastArray.length > 0 ? (
+            prognoza
+             {todayForecastArray.length > 0 ? (
                 <>
                     <p className="forecast-header">Today:</p>
                     <div className="forecast">
@@ -140,7 +181,8 @@ const WeatherForecast = (props) => {
                     </div>
                 </>
             ) : null}
-            <p className="forecast-header">Tomorrow:</p>
+
+            {/* <p className="forecast-header">Tomorrow:</p>
             <div className="forecast">
                 <table>
                     <thead>
@@ -225,8 +267,9 @@ const WeatherForecast = (props) => {
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> */}
             <ul>
+
                 {boxes}
             </ul>
         </div>
