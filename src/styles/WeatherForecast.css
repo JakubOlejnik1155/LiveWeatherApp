@@ -33,3 +33,6 @@ tr th:nth-child(1){
     font-style: italic;
     color: rgb(24, 37, 73);
 }
+td img{
+    height: 30px;
+}

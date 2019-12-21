@@ -307,6 +307,9 @@ const Response = (props) => {
     if (props.weather.rain) {
         rain = props.weather.rain["1h"];
     }
+    else if (props.weather.snow) {
+        rain = "#" + props.weather.snow["3h"]
+    }
     return (
         <div className="liveWeatherResponse">
             <p id="head">Live weather for <span className="head">{props.weather.name + " "}</span><em>({Country}) {props.time}</em></p>
@@ -317,7 +320,7 @@ const Response = (props) => {
                 <p><img src={Humidity} alt="humidity" /><span className="head">Humidity: </span>{props.weather.main.humidity + "%"}</p>
                 <p><img src={Pressure} alt="pressure" /><span className="head">Pressure: </span>{props.weather.main.pressure + " hPa"}</p>
                 <p><img src={Cloud} alt="cloud" /><span className="head">Clouds: </span>{props.weather.clouds.all + "%"}</p>
-                <p><img src={Rain} alt="rain" /><span className="head">Rain in last hour: </span>{rain + " mm"}</p>
+                <p><img src={Rain} alt="rain" /><span className="head">Rain / #snow in last hour: </span>{rain + " mm"}</p>
                 <p><img src={Wind} alt="wind" /><span className="head">Wind speed: </span> {props.weather.wind.speed + " m/s"}</p>
                 <p><img src={Direction} alt="wind-direction" /><span className="head">Wind direction: </span>{props.weather.wind.deg ? props.weather.wind.deg + "°" : " - "} <em>({props.weather.wind.deg ? windCompas : " - "})</em></p>
             </div>
