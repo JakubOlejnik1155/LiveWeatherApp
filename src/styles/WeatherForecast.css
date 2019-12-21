@@ -4,18 +4,32 @@
 }
 .forecast-header{
     text-align: left;
-    margin: 0 50px;
+    margin: 20px 0 0 10px;
+    font-weight: bold;
     color: #61dafb;
 }
 .forecast{
-    height: 100px;
+    height: 200px;
     background-color: rgba(240,248,255,.5);
-    margin: 10px 50px;
+    margin: 10px 10px;
     border-radius: 10px;
+    padding: 10px 20px;
 }
 #forecast-container ul {
     list-style: none;
 }
 #forecast-container ul li {
     display: block;
+}
+.forecast table{
+    height: 100%;
+    width: 100%;
+}
+tr th:nth-child(1){
+    width: 20px;
+    text-align: left;
+}
+.table-italic{
+    font-style: italic;
+    color: rgb(24, 37, 73);
 }
