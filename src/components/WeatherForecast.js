@@ -23,7 +23,7 @@ const WeatherForecast = (props) => {
 
     //showing number of forecast boxes properly
     const boxes = []
-    for (let index = 0; index < restDaysForecast.length - 1; index += 8) {
+    for (let index = 8; index < restDaysForecast.length - 1; index += 8) {
         // debugger
         boxes.push(<li key={restDaysForecast[index].dt_txt}><p className="forecast-header">{restDaysForecast[index].dt_txt.substring(0, 10)}</p> <div className="forecast"></div></li>)
     }
