@@ -276,7 +276,6 @@ const Response = (props) => {
     }
     //viariables
     const ForecastRequest = () => {
-        console.log('forecast reaquest for ' + props.weather.name);
         fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${props.weather.name}&appid=9b2e69fdc3396e7b6cd92b0d5a636435&units=metric`)
             .then(response => {
                 if (response.ok) {
