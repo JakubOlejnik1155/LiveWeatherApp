@@ -89,7 +89,11 @@ const WeatherForecast = (props) => {
     console.log("days:")
     console.log(days)
 
+
     // //todays Tables
+    const tempStyleCold = { color: "rgb(88,90,92)" }
+    const windStrong = { color: "coral" }
+    const rain = { color: "#61dafb" }
     const todayHours = [], todayContitions = [], todayPressure = [], todayTemperature = [], todayRain = [], todayWindSpeed = [], todayWindDir = []
     for (let index = 0; index < todayForecastArray.length; index++) {
         todayHours.push(
@@ -103,16 +107,25 @@ const WeatherForecast = (props) => {
         todayPressure.push(
             <td key={todayForecastArray[index].dt_txt}> {todayForecastArray[index].main.pressure + " hPa"}</td>
         )
-        todayTemperature.push(
-            <td key={todayForecastArray[index].dt_txt}> {todayForecastArray[index].main.temp + "°C"} </td>
-        )
+        if (todayForecastArray[index].main.temp < 0) {
+            todayTemperature.push(
+                <td key={todayForecastArray[index].dt_txt}
+                    style={tempStyleCold}
+                > {todayForecastArray[index].main.temp + "°C"} </td>
+            )
+        } else {
+            todayTemperature.push(
+                <td key={todayForecastArray[index].dt_txt}> {todayForecastArray[index].main.temp + "°C"} </td>
+            )
+        }
+
         if (todayForecastArray[index].rain) {
             todayRain.push(
-                <td key={todayForecastArray[index].dt_txt}> {todayForecastArray[index].rain["3h"] + " mm"} </td>
+                <td key={todayForecastArray[index].dt_txt} style={rain}> {todayForecastArray[index].rain["3h"] + " mm"} </td>
             )
         } else if (todayForecastArray[index].snow) {
             todayRain.push(
-                <td key={todayForecastArray[index].dt_txt}> {todayForecastArray[index].snow["3h"] + "# mm"} </td>
+                <td key={todayForecastArray[index].dt_txt} style={rain}> {todayForecastArray[index].snow["3h"] + "# mm"} </td>
             )
         } else {
             todayRain.push(
@@ -120,9 +133,15 @@ const WeatherForecast = (props) => {
             )
         }
         if (todayForecastArray[index].wind.speed) {
-            todayWindSpeed.push(
-                <td key={todayForecastArray[index].dt_txt}> {todayForecastArray[index].wind.speed + " m/s"} </td>
-            )
+            if (todayForecastArray[index].wind.speed > 5) {
+                todayWindSpeed.push(
+                    <td key={todayForecastArray[index].dt_txt} style={windStrong}> {todayForecastArray[index].wind.speed + " m/s"} </td>
+                )
+            } else {
+                todayWindSpeed.push(
+                    <td key={todayForecastArray[index].dt_txt}> {todayForecastArray[index].wind.speed + " m/s"} </td>
+                )
+            }
         }
         if (todayForecastArray[index].wind.deg) {
             const cc = degToCompass(todayForecastArray[index].wind.deg)
@@ -153,11 +172,11 @@ const WeatherForecast = (props) => {
     console.log("fa1:")
     console.log(fa1)
 
+
     /////////RETURN/////////////////
     return (
         <div id="forecast-container">
-            prognoza
-             {todayForecastArray.length > 0 ? (
+            {todayForecastArray.length > 0 ? (
                 <>
                     <p className="forecast-header">Today:</p>
                     <div className="forecast">

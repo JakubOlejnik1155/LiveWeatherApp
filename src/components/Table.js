@@ -7,7 +7,9 @@ const Table = (props) => {
         return arr[(val % 16)];
     }
     console.log(props.forecast)
-
+    const tempStyleCold = { color: "rgb(88,90,92)" }
+    const rain = { color: "#61dafb" }
+    const windStrong = { color: "coral" }
     const todayHours = [], todayContitions = [], todayPressure = [], todayTemperature = [], todayRain = [], todayWindSpeed = [], todayWindDir = []
     for (let index = 0; index < props.forecast.length; index++) {
         todayHours.push(
@@ -21,16 +23,24 @@ const Table = (props) => {
         todayPressure.push(
             <td key={props.forecast[index].dt_txt}> {props.forecast[index].main.pressure + " hPa"}</td>
         )
-        todayTemperature.push(
-            <td key={props.forecast[index].dt_txt}> {props.forecast[index].main.temp + "°C"} </td>
-        )
+        if (props.forecast[index].main.temp < 0) {
+            todayTemperature.push(
+                <td key={props.forecast[index].dt_txt}
+                    style={tempStyleCold}
+                > {props.forecast[index].main.temp + "°C"} </td>
+            )
+        } else {
+            todayTemperature.push(
+                <td key={props.forecast[index].dt_txt}> {props.forecast[index].main.temp + "°C"} </td>
+            )
+        }
         if (props.forecast[index].rain) {
             todayRain.push(
-                <td key={props.forecast[index].dt_txt}> {props.forecast[index].rain["3h"] + " mm"} </td>
+                <td key={props.forecast[index].dt_txt} style={rain}> {props.forecast[index].rain["3h"] + " mm"} </td>
             )
         } else if (props.forecast[index].snow) {
             todayRain.push(
-                <td key={props.forecast[index].dt_txt}> {props.forecast[index].snow["3h"] + "# mm"} </td>
+                <td key={props.forecast[index].dt_txt} style={rain}> {props.forecast[index].snow["3h"] + "# mm"} </td>
             )
         } else {
             todayRain.push(
@@ -38,9 +48,15 @@ const Table = (props) => {
             )
         }
         if (props.forecast[index].wind.speed) {
-            todayWindSpeed.push(
-                <td key={props.forecast[index].dt_txt}> {props.forecast[index].wind.speed + " m/s"} </td>
-            )
+            if (props.forecast[index].wind.speed > 5) {
+                todayWindSpeed.push(
+                    <td key={props.forecast[index].dt_txt} style={windStrong}> {props.forecast[index].wind.speed + " m/s"} </td>
+                )
+            } else {
+                todayWindSpeed.push(
+                    <td key={props.forecast[index].dt_txt}> {props.forecast[index].wind.speed + " m/s"} </td>
+                )
+            }
         }
         if (props.forecast[index].wind.deg) {
             const cc = degToCompass(props.forecast[index].wind.deg)
@@ -53,10 +69,6 @@ const Table = (props) => {
             )
         }
     }
-
-
-
-
 
     return (
         <table>
