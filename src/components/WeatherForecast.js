@@ -49,7 +49,6 @@ const WeatherForecast = (props) => {
             break;
         }
     }
-    //@TODO kiedy godzina jest mieczy 00  01 to nie działa wszystko wchodzi do
     //deleting todays forecasts from main array
     for (let i = 0; i < todayForecastArray.length; i++) {
         forecastArray_1.shift()

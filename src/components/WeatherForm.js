@@ -4,7 +4,7 @@ import Hello from '../images/hello.png'
 const WeatherForm = (props) => {
     return (
         <div className="top" >
-            <img id="hello" src={Hello} alt="hello" width="100" />
+            <a href="/"> <img id="hello" src={Hello} alt="hello" width="100" /></a>
             <span id="welcome">check live weather and forecast for next few days</span>
             <form onSubmit={props.subimt} className="weatherForm">
                 <input type="text" name="city" id="city" onChange={props.change} value={props.val} placeholder="enter city..." />
