@@ -123,7 +123,7 @@ class App extends Component {
   }
   render() {
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route path="/" exact component={this.Main} />
           <Route path="/about" exact component={this.About} />
