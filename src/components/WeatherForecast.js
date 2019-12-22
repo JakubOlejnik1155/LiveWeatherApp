@@ -49,6 +49,7 @@ const WeatherForecast = (props) => {
             break;
         }
     }
+    //@TODO kiedy godzina jest mieczy 00  01 to nie działa wszystko wchodzi do
     //deleting todays forecasts from main array
     for (let i = 0; i < todayForecastArray.length; i++) {
         forecastArray_1.shift()
@@ -56,14 +57,14 @@ const WeatherForecast = (props) => {
 
     console.log(forecastArray_1)
     console.log(todayForecastArray)
-
+    const fa1 = JSON.parse(JSON.stringify(forecastArray_1))
     const boxes = []
-    for (let index = 8; index < forecastArray_1.length; index += 8) {
+    for (let index = 0; index < forecastArray_1.length; index += 8) {
         boxes.push(
             <li key={forecastArray_1[index].dt_txt}>
                 <p className="forecast-header">{forecastArray_1[index].dt_txt.substring(0, 10)}</p>
                 <div className="forecast">
-                    {forecasts}
+
                 </div>
             </li>
         )
@@ -71,7 +72,7 @@ const WeatherForecast = (props) => {
     //making forecasts arrays in one array called days
     const days = []
     let tmp = []
-    for (let i = 0; i < boxes.length + 1; i++) {
+    for (let i = 0; i < boxes.length; i++) {
         tmp = []
         for (let j = 0; j < 8; j++) {
             if (forecastArray_1[j]) {
@@ -135,7 +136,23 @@ const WeatherForecast = (props) => {
         }
     }
 
-    const forecasts = days.map(day => <Table forecast={day} />)
+    // const forecasts = days.map(day => <Table forecast={day} />)
+    const content = []
+    let a = 0;
+    for (let i = 0; i < fa1.length; i += 8) {
+        content.push(
+            <li key={fa1[i].dt_txt}>
+                <p className="forecast-header">{fa1[i].dt_txt.substring(0, 10)}</p>
+                <div className="forecast">
+                    <Table forecast={days[a]} />
+                </div>
+            </li>
+        )
+        a++
+    }
+    console.log("fa1:")
+    console.log(fa1)
+
     /////////RETURN/////////////////
     return (
         <div id="forecast-container">
@@ -181,96 +198,8 @@ const WeatherForecast = (props) => {
                     </div>
                 </>
             ) : null}
-
-            {/* <p className="forecast-header">Tomorrow:</p>
-            <div className="forecast">
-                <table>
-                    <thead>
-                        <tr>
-                            <th className="table-italic" scope="row">hours</th>
-                            <th scope="col">00</th>
-                            <th scope="col">03</th>
-                            <th scope="col">06</th>
-                            <th scope="col">09</th>
-                            <th scope="col">12</th>
-                            <th scope="col">15</th>
-                            <th scope="col">18</th>
-                            <th scope="col">21</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th className="table-italic" scope="row">conditions</th>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <th className="table-italic" scope="row">pressure</th>
-                            <td>992 hPa</td>
-                            <td>992 hPa</td>
-                            <td>992 hPa</td>
-                            <td>992 hPa</td>
-                            <td>992 hPa</td>
-                            <td>992 hPa</td>
-                            <td>992 hPa</td>
-                            <td>992 hPa</td>
-                        </tr>
-                        <tr>
-                            <th className="table-italic" scope="row">rain</th>
-                            <td>5.7°C</td>
-                            <td>5.7°C</td>
-                            <td>5.7°C</td>
-                            <td>5.7°C</td>
-                            <td>5.7°C</td>
-                            <td>5.7°C</td>
-                            <td>5.7°C</td>
-                            <td>5.7°C</td>
-                        </tr>
-                        <tr>
-                            <th className="table-italic" scope="row">temperature</th>
-                            <td>0 mm</td>
-                            <td>0 mm</td>
-                            <td>0 mm</td>
-                            <td>0 mm</td>
-                            <td>0 mm</td>
-                            <td>0 mm</td>
-                            <td>0 mm</td>
-                            <td>0 mm</td>
-                        </tr>
-                        <tr>
-                            <th className="table-italic" scope="row">Wind</th>
-                            <td>3.1 m/s</td>
-                            <td>3.1 m/s</td>
-                            <td>3.1 m/s</td>
-                            <td>3.1 m/s</td>
-                            <td>3.1 m/s</td>
-                            <td>3.1 m/s</td>
-                            <td>3.1 m/s</td>
-                            <td>3.1 m/s</td>
-                        </tr>
-                        <tr>
-                            <th className="table-italic" scope="row">wind dir.</th>
-                            <td>SE</td>
-                            <td>SE</td>
-                            <td>SE</td>
-                            <td>SE</td>
-                            <td>SE</td>
-                            <td>SE</td>
-                            <td>SE</td>
-                            <td>SE</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div> */}
             <ul>
-
-                {boxes}
+                {content}
             </ul>
         </div>
     );
