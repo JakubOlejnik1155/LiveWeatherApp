@@ -25,8 +25,8 @@ const WeatherForecast = (props) => {
     }
     //atrual local time where we looking for forecast
     const actualLocaleTime = calcTime(props.timezone / 3600);
-    console.log(actualLocaleTime.getHours())
-    console.log(new Date().getUTCHours())
+    // console.log(actualLocaleTime.getHours())
+    // console.log(new Date().getUTCHours())
     //all forecast array
     const forecastArray = props.forecast.list; //all days forecast
     const forecastArray_1 = JSON.parse(JSON.stringify(forecastArray));//all days forecast copy to change
@@ -55,8 +55,8 @@ const WeatherForecast = (props) => {
         forecastArray_1.shift()
     }
 
-    console.log(forecastArray_1)
-    console.log(todayForecastArray)
+    // console.log(forecastArray_1)
+    // console.log(todayForecastArray)
     const fa1 = JSON.parse(JSON.stringify(forecastArray_1))
     const boxes = []
     for (let index = 0; index < forecastArray_1.length; index += 8) {
@@ -86,8 +86,8 @@ const WeatherForecast = (props) => {
             }
         }
     }
-    console.log("days:")
-    console.log(days)
+    // console.log("days:")
+    // console.log(days)
 
 
     // //todays Tables
@@ -169,8 +169,8 @@ const WeatherForecast = (props) => {
         )
         a++
     }
-    console.log("fa1:")
-    console.log(fa1)
+    // console.log("fa1:")
+    // console.log(fa1)
 
 
     /////////RETURN/////////////////
