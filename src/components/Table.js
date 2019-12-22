@@ -9,7 +9,7 @@ const Table = (props) => {
     // console.log(props.forecast)
     const tempStyleCold = { color: "rgb(88,90,92)" }
     const rain = { color: "#61dafb" }
-    const windStrong = { color: "coral" }
+    const windStrong = { color: "darkorange" }
     const todayHours = [], todayContitions = [], todayPressure = [], todayTemperature = [], todayRain = [], todayWindSpeed = [], todayWindDir = []
     for (let index = 0; index < props.forecast.length; index++) {
         todayHours.push(

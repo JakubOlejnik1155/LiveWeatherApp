@@ -92,7 +92,7 @@ const WeatherForecast = (props) => {
 
     // //todays Tables
     const tempStyleCold = { color: "rgb(88,90,92)" }
-    const windStrong = { color: "coral" }
+    const windStrong = { color: "darkorange" }
     const rain = { color: "#61dafb" }
     const todayHours = [], todayContitions = [], todayPressure = [], todayTemperature = [], todayRain = [], todayWindSpeed = [], todayWindDir = []
     for (let index = 0; index < todayForecastArray.length; index++) {
