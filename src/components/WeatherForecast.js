@@ -60,13 +60,13 @@ const WeatherForecast = (props) => {
     const fa1 = JSON.parse(JSON.stringify(forecastArray_1))
     const boxes = []
     for (let index = 0; index < forecastArray_1.length; index += 8) {
-        boxes.push(
-            <li key={forecastArray_1[index].dt_txt}>
-                <p className="forecast-header">{forecastArray_1[index].dt_txt.substring(0, 10)}</p>
-                <div className="forecast">
+        boxes.push("."
+            // <li key={forecastArray_1[index].dt_txt}>
+            //     <p className="forecast-header">{forecastArray_1[index].dt_txt.substring(0, 10)}</p>
+            //     <div className="forecast">
 
-                </div>
-            </li>
+            //     </div>
+            // </li>
         )
     }
     //making forecasts arrays in one array called days
