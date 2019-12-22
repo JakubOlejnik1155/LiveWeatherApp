@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4181756aab5a08d652889f5731bbac8d",
+    "revision": "c7841649f5cf3a11657a02c7c2ff6f5d",
     "url": "/LiveWeatherApp/index.html"
   },
   {
-    "revision": "092140807340e277f890",
+    "revision": "9bb54eaf939efa0d6a24",
     "url": "/LiveWeatherApp/static/css/main.197c4e1d.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/LiveWeatherApp/static/js/2.b76d2a17.chunk.js.LICENSE"
   },
   {
-    "revision": "092140807340e277f890",
-    "url": "/LiveWeatherApp/static/js/main.8e08e52e.chunk.js"
+    "revision": "9bb54eaf939efa0d6a24",
+    "url": "/LiveWeatherApp/static/js/main.49906019.chunk.js"
   },
   {
     "revision": "22108ccb4879ecd231ca",
