@@ -17,6 +17,10 @@ class App extends Component {
     isForecastNeeded: false,
   }
 
+  ForecastDoNotNeeded = () => {
+    this.setState({ isForecastNeeded: false });
+  }
+
   calcTime = (offset) => {
     const d = new Date();
     const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
@@ -129,7 +133,7 @@ class App extends Component {
           <Route path="/about" exact component={this.About} />
           <Route component={this.BadPath} />
         </Switch>
-        <Footer />
+        <Footer ForecastDoNotNeeded={this.ForecastDoNotNeeded} />
       </Router>
     );
   }
