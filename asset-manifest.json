@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "%20//jakubolejnik1155.github.io/LiveWeatherApp/static/css/main.6e73c79d.chunk.css",
-    "main.js": "%20//jakubolejnik1155.github.io/LiveWeatherApp/static/js/main.bbdcf381.chunk.js",
-    "main.js.map": "%20//jakubolejnik1155.github.io/LiveWeatherApp/static/js/main.bbdcf381.chunk.js.map",
-    "runtime-main.js": "%20//jakubolejnik1155.github.io/LiveWeatherApp/static/js/runtime-main.d0921299.js",
-    "runtime-main.js.map": "%20//jakubolejnik1155.github.io/LiveWeatherApp/static/js/runtime-main.d0921299.js.map",
-    "static/js/2.55628f87.chunk.js": "%20//jakubolejnik1155.github.io/LiveWeatherApp/static/js/2.55628f87.chunk.js",
-    "static/js/2.55628f87.chunk.js.map": "%20//jakubolejnik1155.github.io/LiveWeatherApp/static/js/2.55628f87.chunk.js.map",
-    "index.html": "%20//jakubolejnik1155.github.io/LiveWeatherApp/index.html",
-    "precache-manifest.831df545f261345ef4fe0284c8ce0785.js": "%20//jakubolejnik1155.github.io/LiveWeatherApp/precache-manifest.831df545f261345ef4fe0284c8ce0785.js",
-    "service-worker.js": "%20//jakubolejnik1155.github.io/LiveWeatherApp/service-worker.js",
-    "static/css/main.6e73c79d.chunk.css.map": "%20//jakubolejnik1155.github.io/LiveWeatherApp/static/css/main.6e73c79d.chunk.css.map",
-    "static/js/2.55628f87.chunk.js.LICENSE": "%20//jakubolejnik1155.github.io/LiveWeatherApp/static/js/2.55628f87.chunk.js.LICENSE",
-    "static/media/index.css": "%20//jakubolejnik1155.github.io/LiveWeatherApp/static/media/background-mountain.e08f167e.jpg"
+    "main.css": "/LiveWeatherApp/static/css/main.197c4e1d.chunk.css",
+    "main.js": "/LiveWeatherApp/static/js/main.ad9b6daf.chunk.js",
+    "main.js.map": "/LiveWeatherApp/static/js/main.ad9b6daf.chunk.js.map",
+    "runtime-main.js": "/LiveWeatherApp/static/js/runtime-main.a664465d.js",
+    "runtime-main.js.map": "/LiveWeatherApp/static/js/runtime-main.a664465d.js.map",
+    "static/js/2.b76d2a17.chunk.js": "/LiveWeatherApp/static/js/2.b76d2a17.chunk.js",
+    "static/js/2.b76d2a17.chunk.js.map": "/LiveWeatherApp/static/js/2.b76d2a17.chunk.js.map",
+    "index.html": "/LiveWeatherApp/index.html",
+    "precache-manifest.ad0842973cd2016dd8a2f837264f84ed.js": "/LiveWeatherApp/precache-manifest.ad0842973cd2016dd8a2f837264f84ed.js",
+    "service-worker.js": "/LiveWeatherApp/service-worker.js",
+    "static/css/main.197c4e1d.chunk.css.map": "/LiveWeatherApp/static/css/main.197c4e1d.chunk.css.map",
+    "static/js/2.b76d2a17.chunk.js.LICENSE": "/LiveWeatherApp/static/js/2.b76d2a17.chunk.js.LICENSE",
+    "static/media/index.css": "/LiveWeatherApp/static/media/background-mountain.e08f167e.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.d0921299.js",
-    "static/js/2.55628f87.chunk.js",
-    "static/css/main.6e73c79d.chunk.css",
-    "static/js/main.bbdcf381.chunk.js"
+    "static/js/runtime-main.a664465d.js",
+    "static/js/2.b76d2a17.chunk.js",
+    "static/css/main.197c4e1d.chunk.css",
+    "static/js/main.ad9b6daf.chunk.js"
   ]
 }
