@@ -4,6 +4,8 @@ import WeatherForm from './WeatherForm'
 import Response from './Response'
 import Error from './Error'
 import Footer from './Footer'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import Shocked from '../images/shocked.png'
 
 class App extends Component {
   state = {
@@ -14,6 +16,7 @@ class App extends Component {
     missingCity: null,
     isForecastNeeded: false,
   }
+
   calcTime = (offset) => {
     const d = new Date();
     const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
@@ -71,21 +74,63 @@ class App extends Component {
       return { isForecastNeeded: !prevState.isForecastNeeded };
     });
   }
+  Main = () => {
+    return (
+      <div id="container">
+        <div className="App">
+          <WeatherForm val={this.state.input} subimt={this.handleFormSubmition} change={this.handleInputChange} />
+          {this.state.error && <Error city={this.state.missingCity} err={this.state.error} />}
+          {(this.state.weather && !this.state.error) && <Response
+            weather={this.state.weather} time={this.state.time}
+            handleForecastChange={this.handleForecastChange}
+            isForecastNeeded={this.state.isForecastNeeded} />}
+        </div>
+      </div>
+    )
+  }
+  About = () => {
+    return (
+      <div id="About">
+        <div className="About">
+          <p>All weather data comes from <em>
+            <a href="https://openweathermap.org/api" target="_blank" rel="noopener noreferrer">
+              OpenWeather API</a></em></p>
+          <p>Used icons comes from
+           <em> <a href="https://origin.fontawesome.com/icons?d=gallery" target="_blank" rel="noopener noreferrer"> FontAwesome</a></em></p>
+          <p>Background source is
+           <em> <a href="https://pixabay.com/" target="_blank" rel="noopener noreferrer"> Pixabay</a></em></p>
+          <p style={{ marginTop: "20px", marginBottom: "10px" }}>
+            Let me know if you found a bug or have ideas how to improve a project<br />
+            <a type="email" href="mailto:logbook1155@gmail.com">logbook1155@gmail.com</a> </p>
+          <Link id="back" to="/">Retur to forecast</Link>
+        </div>
+      </div >
+    )
+  }
+  BadPath = () => {
+    return (
+      <div id="About">
+        <div className="About">
+          <div className="errorResponse">
+            <img src={Shocked} alt="emoji" />
+            <p className="errorNumber">Error number: <span className='erNumber'>404</span></p>
+            <p>It looks like the page you are looking for does not exist</p>
+          </div>
+          <Link id="back" to="/">Retur to forecast</Link>
+        </div>
+      </div >
+    )
+  }
   render() {
     return (
-      <>
-        <div id="container">
-          <div className="App">
-            <WeatherForm val={this.state.input} subimt={this.handleFormSubmition} change={this.handleInputChange} />
-            {this.state.error && <Error city={this.state.missingCity} err={this.state.error} />}
-            {(this.state.weather && !this.state.error) && <Response
-              weather={this.state.weather} time={this.state.time}
-              handleForecastChange={this.handleForecastChange}
-              isForecastNeeded={this.state.isForecastNeeded} />}
-          </div>
-        </div>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={this.Main} />
+          <Route path="/about" exact component={this.About} />
+          <Route component={this.BadPath} />
+        </Switch>
         <Footer />
-      </>
+      </Router>
     );
   }
 }
