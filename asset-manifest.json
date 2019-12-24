@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/LiveWeatherApp/static/css/main.197c4e1d.chunk.css",
-    "main.js": "/LiveWeatherApp/static/js/main.49906019.chunk.js",
-    "main.js.map": "/LiveWeatherApp/static/js/main.49906019.chunk.js.map",
+    "main.css": "/LiveWeatherApp/static/css/main.4b3c0315.chunk.css",
+    "main.js": "/LiveWeatherApp/static/js/main.03b39c62.chunk.js",
+    "main.js.map": "/LiveWeatherApp/static/js/main.03b39c62.chunk.js.map",
     "runtime-main.js": "/LiveWeatherApp/static/js/runtime-main.a664465d.js",
     "runtime-main.js.map": "/LiveWeatherApp/static/js/runtime-main.a664465d.js.map",
     "static/js/2.b76d2a17.chunk.js": "/LiveWeatherApp/static/js/2.b76d2a17.chunk.js",
     "static/js/2.b76d2a17.chunk.js.map": "/LiveWeatherApp/static/js/2.b76d2a17.chunk.js.map",
     "index.html": "/LiveWeatherApp/index.html",
-    "precache-manifest.8be27bd2f749d4f5174322a567a2be1b.js": "/LiveWeatherApp/precache-manifest.8be27bd2f749d4f5174322a567a2be1b.js",
+    "precache-manifest.48bc3449d7c6e66819d4c934a9ac5687.js": "/LiveWeatherApp/precache-manifest.48bc3449d7c6e66819d4c934a9ac5687.js",
     "service-worker.js": "/LiveWeatherApp/service-worker.js",
-    "static/css/main.197c4e1d.chunk.css.map": "/LiveWeatherApp/static/css/main.197c4e1d.chunk.css.map",
+    "static/css/main.4b3c0315.chunk.css.map": "/LiveWeatherApp/static/css/main.4b3c0315.chunk.css.map",
     "static/js/2.b76d2a17.chunk.js.LICENSE": "/LiveWeatherApp/static/js/2.b76d2a17.chunk.js.LICENSE",
     "static/media/index.css": "/LiveWeatherApp/static/media/background-mountain.e08f167e.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.a664465d.js",
     "static/js/2.b76d2a17.chunk.js",
-    "static/css/main.197c4e1d.chunk.css",
-    "static/js/main.49906019.chunk.js"
+    "static/css/main.4b3c0315.chunk.css",
+    "static/js/main.03b39c62.chunk.js"
   ]
 }
