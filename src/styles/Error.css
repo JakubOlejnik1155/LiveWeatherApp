@@ -11,3 +11,9 @@
 .errorResponse img{
     width: 50px;
 }
+@media (max-width: 821px) {
+    .errorResponse{
+        color:whitesmoke;
+        margin-top: 15vw;
+    }
+}

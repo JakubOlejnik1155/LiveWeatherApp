@@ -1,38 +1,77 @@
-#forecast-container{
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+@media (min-width: 820px){
+    #forecast-container{
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    .forecast-header{
+        text-align: left;
+        margin: 20px 0 0 10px;
+        font-weight: bold;
+        color: #61dafb;
+    }
+    .forecast{
+        min-height: 200px;
+        background-color: rgba(240,248,255,.5);
+        margin: 10px 10px;
+        border-radius: 10px;
+        padding: 10px 20px;
+    }
+    #forecast-container ul {
+        list-style: none;
+    }
+    #forecast-container ul li {
+        display: block;
+    }
+    .forecast table{
+        height: 100%;
+        width: 100%;
+    }
+    tr th:nth-child(1){
+        width: 20px;
+        text-align: left;
+    }
+    .table-italic{
+        font-style: italic;
+        color: rgb(24, 37, 73);
+    }
+    td img{
+        height: 30px;
+    }
 }
-.forecast-header{
-    text-align: left;
-    margin: 20px 0 0 10px;
-    font-weight: bold;
-    color: #61dafb;
-}
-.forecast{
-    min-height: 200px;
-    background-color: rgba(240,248,255,.5);
-    margin: 10px 10px;
-    border-radius: 10px;
-    padding: 10px 20px;
-}
-#forecast-container ul {
-    list-style: none;
-}
-#forecast-container ul li {
-    display: block;
-}
-.forecast table{
-    height: 100%;
-    width: 100%;
-}
-tr th:nth-child(1){
-    width: 20px;
-    text-align: left;
-}
-.table-italic{
-    font-style: italic;
-    color: rgb(24, 37, 73);
-}
-td img{
-    height: 30px;
+@media (max-width: 821px){
+    .forecast-header{
+        margin-top: 4vh;
+        margin-bottom: 2vh;
+        font-weight: bold;
+        color: #61dafb;
+    }
+    .forecast{
+        min-height: 200px;
+        background-color: rgba(240,248,255,.5);
+        border-radius: 10px;
+        padding: 10px 20px;
+        width: 100%;
+        overflow-x: scroll;
+    }
+    #forecast-container ul {
+        list-style: none;
+    }
+    #forecast-container ul li {
+        display: block;
+    }
+    .forecast table{
+        height: 100%;
+        width: 800px;
+    }
+    tr th:nth-child(1){
+        width: 20px;
+        text-align: left;
+    }
+    .table-italic{
+        font-style: italic;
+        color: rgb(24, 37, 73);
+    }
+    td img{
+        height: 30px;
+    }
 }

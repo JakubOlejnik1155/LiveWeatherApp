@@ -1,4 +1,6 @@
-.weatherForm{
+
+@media (min-width: 820px) {
+      .weatherForm{
     background-color: #282c34;
     padding: 20px;
 }
@@ -40,4 +42,35 @@
     position: absolute;
     color: whitesmoke;
     font-style: italic;
+}
+}
+@media (max-width: 821px) {
+.weatherForm input{
+    padding: 10px;
+    width: 80vw;
+    border: 3px solid #61dafb;
+    border-radius: 30px;
+}
+.weatherForm input:focus , .weatherForm button:focus {
+    outline-width: 0;
+}
+.weatherForm button{
+    padding: 10px 10px;
+    background-color: rgba(75, 8, 102, .3);
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+    width: 60vw;
+    border-radius: 40px;
+    letter-spacing: 1px;
+    margin-top: 3vh;
+}
+#hello{
+    display: inline-block;
+}
+#welcome{
+    display: inline-block;
+    color: whitesmoke;
+    font-style: italic;
+    margin-bottom: 4vh;
+}
 }

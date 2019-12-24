@@ -1,3 +1,4 @@
+@media (min-width: 820px){
 .head{
      color: #61dafb;
 }
@@ -51,4 +52,55 @@ div#live-conditions p img{
 }
 #forecast-button:focus, #hide-forecast-button:focus{
     outline: none;
+}
+}
+@media (max-width: 821px){
+#head{
+    font-size: 18px;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+#head .head::after {
+      content: "\a";
+      white-space: pre;
+    }
+.head{
+     color: #61dafb;
+}
+.liveWeatherResponse{
+    color: whitesmoke;
+}
+#live-conditions p:nth-child(3) em {
+    display: none;
+}
+div#live-conditions {
+    padding-bottom: 5vw;
+    padding-left: 15vw;
+    text-align: left;
+}
+div#live-conditions  p{
+    margin-bottom: 10px;
+}
+div#live-conditions p img{
+    height: 20px;
+    margin-right: 10px;
+}
+#forecast-button{
+    padding: 10px 5px;
+    color: whitesmoke;
+    border: 2px solid whitesmoke;
+    background-color: rgba(75, 8, 102, .3);;
+    border-radius: 20px;
+
+}
+#hide-forecast-button{
+    padding: 10px 50px;
+    color: whitesmoke;
+    border: 2px solid whitesmoke;
+    background-color: rgba(75, 8, 102, .3);;
+    border-radius: 20px;
+}
+#forecast-button:focus, #hide-forecast-button:focus{
+    outline: none;
+}
 }

@@ -6,7 +6,6 @@ const Table = (props) => {
         const arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
         return arr[(val % 16)];
     }
-    // console.log(props.forecast)
     const tempStyleCold = { color: "rgb(88,90,92)" }
     const rain = { color: "#61dafb" }
     const windStrong = { color: "darkorange" }

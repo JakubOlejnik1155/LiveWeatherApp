@@ -25,8 +25,6 @@ const WeatherForecast = (props) => {
     }
     //atrual local time where we looking for forecast
     const actualLocaleTime = calcTime(props.timezone / 3600);
-    // console.log(actualLocaleTime.getHours())
-    // console.log(new Date().getUTCHours())
     //all forecast array
     const forecastArray = props.forecast.list; //all days forecast
     const forecastArray_1 = JSON.parse(JSON.stringify(forecastArray));//all days forecast copy to change
@@ -53,20 +51,10 @@ const WeatherForecast = (props) => {
     for (let i = 0; i < todayForecastArray.length; i++) {
         forecastArray_1.shift()
     }
-
-    // console.log(forecastArray_1)
-    // console.log(todayForecastArray)
     const fa1 = JSON.parse(JSON.stringify(forecastArray_1))
     const boxes = []
     for (let index = 0; index < forecastArray_1.length; index += 8) {
-        boxes.push("."
-            // <li key={forecastArray_1[index].dt_txt}>
-            //     <p className="forecast-header">{forecastArray_1[index].dt_txt.substring(0, 10)}</p>
-            //     <div className="forecast">
-
-            //     </div>
-            // </li>
-        )
+        boxes.push(".")
     }
     //making forecasts arrays in one array called days
     const days = []
@@ -85,10 +73,6 @@ const WeatherForecast = (props) => {
             }
         }
     }
-    // console.log("days:")
-    // console.log(days)
-
-
     // //todays Tables
     const tempStyleCold = { color: "rgb(88,90,92)" }
     const windStrong = { color: "darkorange" }
@@ -153,7 +137,6 @@ const WeatherForecast = (props) => {
             )
         }
     }
-
     // const forecasts = days.map(day => <Table forecast={day} />)
     const content = []
     let a = 0;
@@ -168,10 +151,6 @@ const WeatherForecast = (props) => {
         )
         a++
     }
-    // console.log("fa1:")
-    // console.log(fa1)
-
-
     /////////RETURN/////////////////
     return (
         <div id="forecast-container">
@@ -222,5 +201,4 @@ const WeatherForecast = (props) => {
         </div>
     );
 }
-
 export default WeatherForecast;
