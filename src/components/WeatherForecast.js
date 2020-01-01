@@ -140,10 +140,11 @@ const WeatherForecast = (props) => {
     // const forecasts = days.map(day => <Table forecast={day} />)
     const content = []
     let a = 0;
+    console.log(forecastArray);
     for (let i = 0; i < fa1.length; i += 8) {
         content.push(
             <li key={fa1[i].dt_txt}>
-                <p className="forecast-header">{fa1[i].dt_txt.substring(0, 10)}</p>
+                <p className="forecast-header">{forecastArray[i].dt_txt.substring(0, 10)}</p>
                 <div className="forecast">
                     <Table forecast={days[a]} />
                 </div>
